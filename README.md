@@ -37,7 +37,7 @@ content = Discord.get_user(
 print(content)
 ```
 
-### Multipule token reactions
+### Multiple token reactions
 ```python
 from wrapper import *
 
