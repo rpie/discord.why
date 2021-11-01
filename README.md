@@ -3,6 +3,23 @@ A python Discord wrapper made in well, python.
 
 Made to be used by devs who want something a bit more, general.
 
+# Basic Examples
+### Sending a message
+```python
+import discordwhy
+
+Discord = Discord(token)
+
+content = Discord.get_user(
+    channel = 894348837009915935,
+    message = 'Sent via discord.why'
+).response
+
+print(content)
+```
+
+Output: `Sent: True; Status: 200`
+
 # Basics
 
 ### Rate Limiting: REST
