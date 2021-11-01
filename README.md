@@ -1,19 +1,27 @@
 # discord.why
-Just seeing how it would be to make an API wrapper for Discord.com :)
+A python Discord wrapper made in well, python.
 
-# Rate limiting
-```
-REST:
-        POST Message |  5/5s     | per-channel
-      DELETE Message |  5/1s     | per-channel
- PUT/DELETE Reaction |  300/300s | per-channel
-        PATCH Member |  10/10s   | per-guild
-   PATCH Member Nick |  1/1s     | per-guild
-      PATCH Username |  2/3600s  | per-account
-      |All Requests| |  50/1s    | per-account
-      
-WS:
-     Gateway Connect |   1/5s    | per-account
-     Presence Update |   5/60s   | per-session
-   All Sent Messages | 120/60s   | per-session
-```
+Made to be used by devs who want something a bit more, general.
+
+# Basics
+
+### Rate Limiting: REST
+
+| Rest Type     | API Location  | Limit         |
+| ------------- | ------------- | ------------- |
+| POST Message  | Per-Channel  | 5/5s              |
+| DELETE Message| Per-Channel  | 5/1s           |
+| PUT/DELETE Reaction  | Per-Channel  | 300/300s              |
+| PATCH Member | Per-Guild  |  10/10s             |
+| PATCH Member Nick | Per-Guild  |  1/1s             |
+| PATCH Username | Per-Account  | 2/3600s
+| All Requests  | Per-Account  |  50/1s             |
+
+
+### Rate Limiting: WS
+
+| Rest Type     | API Location  | Limit         |
+| ------------- | ------------- | ------------- |
+|     Gateway Connect |   Per-Account    | 1/5s
+|     Presence Update |   Per-Session  | 5/60s
+|   All Sent Messages | Per-Session   | 120/60s
