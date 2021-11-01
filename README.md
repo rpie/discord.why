@@ -10,7 +10,7 @@ import discordwhy
 
 Discord = Discord(token)
 
-content = Discord.get_user(
+content = Discord.send_message(
     channel = 894348837009915935,
     message = 'Sent via discord.why'
 ).response
@@ -19,6 +19,21 @@ print(content)
 ```
 
 Output: `Sent: True; Status: 200`
+
+### Getting user details
+```python
+import discordwhy
+
+Discord = Discord(token)
+
+content = Discord.get_user(
+    user = 894348837009915935,
+).response
+
+print(content)
+```
+
+Output: `Status: 200`
 
 # Basics
 
