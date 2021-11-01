@@ -9,7 +9,7 @@ Made to be used by devs who want something a bit more, general.
 Send a message with the content *'testing discord.why'*, after the message is sent delete after 10 seconds.
 
 ```python
-import discordwhy
+from wrapper import *
 
 Discord = Discord('TOKEN')
 
@@ -26,7 +26,7 @@ Output: `Sent: True; Status: 200`
 
 ### Getting user details
 ```python
-import discordwhy
+from wrapper import *
 
 Discord = Discord('TOKEN')
 
