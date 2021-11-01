@@ -17,7 +17,7 @@ content = Discord.send_message(
     channel = 904513273058177055,
     message = 'testing discord.why',
     delete_after = 10
-).response
+).json()
 
 print(content)
 ```
@@ -32,10 +32,29 @@ Discord = Discord('TOKEN')
 
 content = Discord.get_user(
     user = 894348837009915935,
-).response
+).json()
 
 print(content)
 ```
+
+### Multipule token reactions
+```python
+from wrapper import *
+
+def send(w):
+    content = w.create_reaction(
+        channel = 904627884944138240,
+        message = 904634461356965888,
+        reaction = 'cool'
+    ).json()
+    
+    print(content)
+
+for token in open('tokens.txt', 'r').readlines():
+    Wrapper = Discord(token.rstrip())
+    send(Wrapper)
+```
+
 
 Output: `Status: 200`
 
