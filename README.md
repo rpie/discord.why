@@ -5,14 +5,18 @@ Made to be used by devs who want something a bit more, general.
 
 # Basic Examples
 ### Sending a message
+
+Send a message with the content *'testing discord.why'*, after the message is sent delete after 10 seconds.
+
 ```python
 import discordwhy
 
-Discord = Discord(token)
+Discord = Discord('TOKEN')
 
 content = Discord.send_message(
-    channel = 894348837009915935,
-    message = 'Sent via discord.why'
+    channel = 904513273058177055,
+    message = 'testing discord.why',
+    delete_after = 10
 ).response
 
 print(content)
@@ -24,7 +28,7 @@ Output: `Sent: True; Status: 200`
 ```python
 import discordwhy
 
-Discord = Discord(token)
+Discord = Discord('TOKEN')
 
 content = Discord.get_user(
     user = 894348837009915935,
