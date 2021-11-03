@@ -25,6 +25,7 @@ print(content)
 Output: `Sent: True; Status: 200`
 
 ### Getting user details
+Get a users account details including username, user tag, user ID, connections, and mutual servers 
 ```python
 from wrapper import *
 
@@ -37,7 +38,23 @@ content = Discord.get_user(
 print(content)
 ```
 
+### Buying Nitro
+Buy nitro if the account has a valid credit card linked
+```python
+from wrapper import *
+
+for token in open('tokens.txt', 'r').readlines():
+    Discord = Discord(str(token.rstrip()))
+
+    response = Discord.buy_nitro(
+        amount = 1
+    )
+
+    print(response)
+```
+
 ### Multiple token reactions
+Create multiple reactions to a message 
 ```python
 from wrapper import *
 
