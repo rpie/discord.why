@@ -61,8 +61,60 @@ class Discord:
             headers = self.headers
         )
         return self.check_status(r)
-    
+
+    def create_reaction(self, channel=None, message=None, reaction=None):
+        '''
+        Create a reaction to a message based off ID
+        '''
+        r = requests.put(
+            url=f'https://discord.com/api/v9/channels/{channel}/messages/{message}/reactions/%F0%9F%91%80/%40me', 
+            headers = self.headers
+        )
+        return self.check_status(r)
+
+    def check_nitro_status(self):
+        r = requests.get(
+            url = "https://discord.com/api/v7/users/@me/billing/subscriptions", 
+            headers = self.headers
+        ).json()
+        try:
+            if r['plan_id'] == '511651880837840896':
+                return True
+            else:
+                return False
+        except:
+            return None
+
+    def check_verified(self):
+        r = requests.get(
+            url = 'https://discordapp.com/api/v7/users/@me?verified',
+            headers = self.headers
+        )
+        r = r.json()
+        return {'email': r['email'], 'user': f'{r["username"]}#{r["discriminator"]}', 'phone': r['phone'], 'verified': r['verified']}
+
+
+    def check_token(self):
+        r = requests.get(
+            url=f'https://discordapp.com/api/v6/users/@me/library', 
+            headers = self.headers
+        )
+        if r.status_code == 401: 
+            return {'status': 'Invalid', 'error': 'Invalid Token', 'token': self.token}
+        elif "You need to verify your account in order to perform this action." in str(r.content):
+            return {'status': 'Invalid', 'error': 'Phone Locked', 'token': self.token}
+        else:
+            nitro = self.check_nitro_status()
+            return {'status': 'Valid', 'error': None, 'nitro': nitro, 'token': self.token}
+
     def buy_nitro(self):
+        '''
+        Buy nitro if a valid payment source is linked
+
+        Ex:
+            resp = Discord.buy_nitro()
+            print(resp)
+        '''
         r = requests.get(
             url = 'https://discordapp.com/api/v6/users/@me/billing/payment-sources', 
             headers = self.headers
