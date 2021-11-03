@@ -1,7 +1,7 @@
 # discord.why
-A python Discord wrapper made in well, python.
+**This is a work in progress project, please do not use this as a main API wrapper.**
 
-Made to be used by devs who want something a bit more, general.
+I'm creating a discord.why to make it easy to bot and do large operations on the Discord app; Instead of having to compose hundreds of lines only to register an account, purchase nitro, and boost a server, I'd want to have just five lines to accomplish everything. 
 
 # Basic Examples
 ### Sending a message
