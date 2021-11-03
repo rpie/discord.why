@@ -53,6 +53,8 @@ for token in open('tokens.txt', 'r').readlines():
     print(response)
 ```
 
+Output: `discord.gift/675yZrKaLQgqsT94, ODc2NTAyMzYyMTemzZy68WGe.xY-j3j.t-Pk9pCttPEE9iYd9dskTDavexY`
+
 ### Multiple token reactions
 Create multiple reactions to a message 
 ```python
